@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie add</title>
     <link rel='stylesheet' href='/css/style.css' />
-    <script src="/js/moviesAddValidation.js"></script>
+    <script src="/js/moviesAddValidation.js" defer></script>
 </head>
 
 <body>
@@ -18,27 +18,45 @@
     <section id="formulario" >
         <article class="mostrarFormulario">
             <ul class="errores"></ul>
-            <form class="form" action="/movies/create" method="POST">
+            <form id="form" action="/movies/create" method="POST">
                 <label for="title">Titulo </label>
-                <div><input type="text" name="title" id="title" ></div>
+                <div  class="contenedor_div">
+                    <input type="text" name="title" id="title" >
+                    <span class="errorTitle alert-warning"></span>
+                </div>
                 <label for="rating">Calificación </label>
-                <div><input type="number" name="rating" id="rating" placeholder="Indicar valor entre 0 y 10"> </div>
+                <div class="contenedor_div">
+                    <input type="number" name="rating" id="rating" placeholder="Indicar valor entre 0 y 10"> 
+                    <span class="errorRating  alert-warning"></span>
+                </div>
                 <label for="awards">Premios </label>
-                <div><input type="number" name="awards" id="awards" placeholder="Indicar valor entre 0 y 10"></div>
-                <label for="release_date">Fecha de creación </label>
-                <div><input type="date" name="release_date" id="release_date" ></div>
+                <div class="contenedor_div">
+                    <input type="number" name="awards" id="awards" placeholder="Indicar valor entre 0 y 10">
+                    <span class="errorAwards alert-warning"></span>
+                </div>
+                <label for="releaseDate">Fecha de creación </label>
+                <div class="contenedor_div">
+                    <input type="date" name="release_date" id="release_date" >
+                    <span class="errorRelease_date alert-warning"></span>
+                </div>
                 <label for="length">Duración </label>
-                <div><input type="number" name="length" id="length" placeholder="Indicar duración entre 60 y 360 minutos" ></div>
+                <div class="contenedor_div">
+                    <input type="number" name="length" id="length" placeholder="Indicar duración entre 60 y 360 minutos">
+                    <span class="errorLength alert-warning"></span>
+                </div>
                 <label for="genreID">Género </label>
-                <div>
+                <div class="contenedor_div">
                     <select name="genre_id" id="genre_id" >
                         <option value="" disabled selected>- Seleccione el género - </option>
                         <% allGenres.forEach(genre => { %>
                         <option value="<%= genre.id %>"><%= genre.name %></option>
                         <% }); %>
                     </select>
+                    <span class="errorGenre alert-warning"></span>
                 </div>
                 <br>
+
+
                 <div> <button class="botonAgregar" type="submit">Agregar</button>
                 
                 <a  class="botonVolver" href="/movies">Listado de Películas</a></div>
